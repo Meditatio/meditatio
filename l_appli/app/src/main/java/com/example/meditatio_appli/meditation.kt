@@ -1,23 +1,21 @@
 package com.example.meditatio_appli
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 
-class Youtube : YouTubeBaseActivity() {
+class meditation : YouTubeBaseActivity() {
 
     private lateinit var icon : ImageView
     private lateinit var icon1 : ImageView
@@ -25,80 +23,55 @@ class Youtube : YouTubeBaseActivity() {
 
     private val YOUTUBE_API_KEY = "AIzaSyA-gcsPXsUsTFq2ByPxdKUlI0IBd7aNQi8"
 
-    private val VIDEO_ID_1 = "1Ls6ImJBXVY"
-    private val VIDEO_ID_2 = "64sCja7s6lw"
-    private val VIDEO_ID_3 = "aAy9ThYZqQY"
-    private val VIDEO_ID_4 = "2yPSQnnLNDc"
-    private val VIDEO_ID_5 = "_p9gauFHW4k"
-    private val VIDEO_ID_6 = "aI9VbuedMLI"
-    private val VIDEO_ID_7 = "KoD1uenU6go"
-    private val VIDEO_ID_8 = "bzuS_6e1Toc"
-    private val VIDEO_ID_9 = "tbqAmEYuyI4"
-    private val VIDEO_ID_10 = "1falX-nelgY"
+    private val VIDEO_ID_1 = "oMZeHZ7KgBA"
+    private val VIDEO_ID_2 = "kcX7nzM70oA"
+    private val VIDEO_ID_3 = "NUMifav8i6Y"
+    private val VIDEO_ID_4 = "buDTNxAjQII"
+    private val VIDEO_ID_5 = "QEWcTbm6OXk"
 
     private lateinit var youTubePlayer1: YouTubePlayerView
     private lateinit var youTubePlayer2: YouTubePlayerView
     private lateinit var youTubePlayer3: YouTubePlayerView
     private lateinit var youTubePlayer4: YouTubePlayerView
     private lateinit var youTubePlayer5: YouTubePlayerView
-    private lateinit var youTubePlayer6: YouTubePlayerView
-    private lateinit var youTubePlayer7: YouTubePlayerView
-    private lateinit var youTubePlayer8: YouTubePlayerView
-    private lateinit var youTubePlayer9: YouTubePlayerView
-    private lateinit var youTubePlayer10: YouTubePlayerView
+
     private lateinit var miniature1 : ImageView
     private lateinit var miniature2 : ImageView
     private lateinit var miniature3 : ImageView
     private lateinit var miniature4 : ImageView
     private lateinit var miniature5 : ImageView
-    private lateinit var miniature6 : ImageView
-    private lateinit var miniature7 : ImageView
-    private lateinit var miniature8 : ImageView
-    private lateinit var miniature9 : ImageView
-    private lateinit var miniature10 : ImageView
 
     lateinit var youtubePlayerInit1 : YouTubePlayer.OnInitializedListener
     lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
     lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
     lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
     lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit6 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit7 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit8 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit9 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit10 : YouTubePlayer.OnInitializedListener
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_youtube)
+        setContentView(R.layout.activity_meditation)
+
 
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)
         icon1 = findViewById(R.id.icon1)
         icon.setOnClickListener{loadFirstPage(applicationContext)}
-        icon1.setOnClickListener{loadMeditationPage(applicationContext)}
-        title.setText("Programme 1 (Remise en Forme)")
+        icon1.setOnClickListener{loadYoutubePage(applicationContext)}
+        title.setText("Programme 1 (Bien être)")
 
         youTubePlayer1 = findViewById(R.id.youtubePlayer1)
         youTubePlayer2 = findViewById(R.id.youtubePlayer2)
         youTubePlayer3 = findViewById(R.id.youtubePlayer3)
         youTubePlayer4 = findViewById(R.id.youtubePlayer4)
         youTubePlayer5 = findViewById(R.id.youtubePlayer5)
-        youTubePlayer6 = findViewById(R.id.youtubePlayer6)
-        youTubePlayer7 = findViewById(R.id.youtubePlayer7)
-        youTubePlayer8 = findViewById(R.id.youtubePlayer8)
-        youTubePlayer9 = findViewById(R.id.youtubePlayer9)
-        youTubePlayer10 = findViewById(R.id.youtubePlayer10)
+
         miniature1 = findViewById(R.id.miniature1)
         miniature2 = findViewById(R.id.miniature2)
         miniature3 = findViewById(R.id.miniature3)
         miniature4 = findViewById(R.id.miniature4)
         miniature5 = findViewById(R.id.miniature5)
-        miniature6 = findViewById(R.id.miniature6)
-        miniature7 = findViewById(R.id.miniature7)
-        miniature8 = findViewById(R.id.miniature8)
-        miniature9 = findViewById(R.id.miniature9)
-        miniature10 = findViewById(R.id.miniature10)
 
         youtubePlayerInit1 = init(VIDEO_ID_1)
         youTubePlayer1.setOnClickListener {
@@ -125,37 +98,13 @@ class Youtube : YouTubeBaseActivity() {
             youTubePlayer5.initialize(YOUTUBE_API_KEY,youtubePlayerInit5)
             miniature5.visibility = View.INVISIBLE
         }
-        youtubePlayerInit6 = init(VIDEO_ID_6)
-        youTubePlayer6.setOnClickListener {
-            youTubePlayer6.initialize(YOUTUBE_API_KEY,youtubePlayerInit6)
-            miniature6.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit7 = init(VIDEO_ID_7)
-        youTubePlayer7.setOnClickListener {
-            youTubePlayer7.initialize(YOUTUBE_API_KEY,youtubePlayerInit7)
-            miniature7.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit8 = init(VIDEO_ID_8)
-        youTubePlayer8.setOnClickListener {
-            youTubePlayer8.initialize(YOUTUBE_API_KEY,youtubePlayerInit8)
-            miniature8.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit9 = init(VIDEO_ID_9)
-        youTubePlayer9.setOnClickListener {
-            youTubePlayer9.initialize(YOUTUBE_API_KEY,youtubePlayerInit9)
-            miniature9.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit10 = init(VIDEO_ID_10)
-        youTubePlayer10.setOnClickListener {
-            youTubePlayer10.initialize(YOUTUBE_API_KEY,youtubePlayerInit10)
-            miniature10.visibility = View.INVISIBLE
-        }
+
     }
 
-    private fun loadMeditationPage(context: Context)
+    private fun loadYoutubePage(context: Context)
     {
-        Toast.makeText(context, "You at at the méditation page", Toast.LENGTH_LONG).show()
-        val intent = Intent(context, meditation::class.java)
+        Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
+        val intent = Intent(context, Youtube::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
         context.startActivity(intent)
     }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -58,7 +59,7 @@ fun ValidateButton() { // function to show the validate button
     }
 }
 
-fun loadSecondPage(context: Context)
+private fun loadSecondPage(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
     val intent = Intent(context, Youtube::class.java)
@@ -73,6 +74,7 @@ fun MainContent() { // function to show wrap all the previous functions
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         scaffoldState = scaffoldState,
+
         topBar = { TopAppBar(title = {Text("Meditatio")},backgroundColor = MaterialTheme.colors.primary)  },
 
         drawerContent = { Text(text = "Drawer Menu 1") },

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Meditatio_Appli</string>
+    <string name="title_activity_youtube_play">YoutubePlay</string>
 </resources>
