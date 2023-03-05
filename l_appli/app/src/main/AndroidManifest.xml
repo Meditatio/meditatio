@@ -29,8 +29,9 @@
             android:label="@string/title_activity_youtube_play"
             android:theme="@style/Theme.Meditatio_Appli" />
         <activity
-            android:name=".message"
-            android:exported="false" />
+            android:name=".Message"
+            android:exported="false"
+            android:theme="@style/Theme.Meditatio_AppliCompat" />
         <activity
             android:name=".Youtube"
             android:exported="false" />

@@ -58,11 +58,34 @@ fun ValidateButton() { // function to show the validate button
         Text(text = "Youtube Page")
     }
 }
+@Composable
+fun ValidateButton2() { // function to show the validate button
+    val context = LocalContext.current
+
+    Button(
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            loadMessagePage(context)
+        }) {
+        Icon(
+            imageVector = Icons.Default.Info,
+            contentDescription = "Message Page"
+        )
+        Text(text = "Message Page")
+    }
+}
 
 private fun loadSecondPage(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
     val intent = Intent(context, Youtube::class.java)
+    context.startActivity(intent)
+}
+
+private fun loadMessagePage(context: Context)
+{
+    val intent = Intent(context, Message::class.java)
     context.startActivity(intent)
 }
 
@@ -90,6 +113,7 @@ fun MainContent() { // function to show wrap all the previous functions
 
                 Spacer(modifier = Modifier.height(50.dp))
                 ValidateButton()
+                ValidateButton2()
             }
         },
         //bottomBar = { BottomAppBar(backgroundColor = MaterialTheme.colors.primary) { Text("Bottom Bar") } }
