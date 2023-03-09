@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "423618075819",
+    "project_id": "meditatio-b6c2e",
+    "storage_bucket": "meditatio-b6c2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423618075819:android:5b425036a6fe8418e02bee",
+        "android_client_info": {
+          "package_name": "com.example.meditatio_appli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423618075819-apjspndg5mhkd1d7ufo890l55eigp9qp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyyLIJgO18yvUiP5_1gYJ8IwL_Rl6MHL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423618075819-apjspndg5mhkd1d7ufo890l55eigp9qp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
