@@ -61,7 +61,8 @@ class RegisterActivity : AppCompatActivity() {
             val selectPhotoCircle = findViewById<CircleImageView>(R.id.selectphoto_imageview_register)
 
             selectPhotoCircle.setImageBitmap(bitmap)
-            selectPhotoCircle.alpha = 0f
+            val selectPhotoButton = findViewById<Button>(R.id.selectphoto_button_register)
+            selectPhotoButton.alpha = 0f
 
             /*val bitmapDrawable = BitmapDrawable(bitmap)
             val selectPhoto = findViewById<Button>(R.id.selectphoto_button_register)
@@ -120,10 +121,9 @@ class RegisterActivity : AppCompatActivity() {
                     saveUserToFirebaseDatabase(it.toString())
                 }
             }
-            .addOnFailureListener()
-        {
-            //do some logging here
-        }
+            .addOnFailureListener{
+                Log.d("RegisterActivity", "Failed to upload image to storage: ${it.message}")
+            }
     }
 
     private fun saveUserToFirebaseDatabase(profileImageUrl: String)
@@ -135,6 +135,9 @@ class RegisterActivity : AppCompatActivity() {
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("RegisterActivity", "Saving the user to Firebase Database")
+            }
+            .addOnFailureListener{
+                Log.d("RegisterActivity", "Failed to set value to the datebase: ${it.message}")
             }
     }
 }
