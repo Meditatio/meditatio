@@ -1,10 +1,12 @@
-package com.example.meditatio_appli
+package messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.example.meditatio_appli.R
+import registerlogin.RegisterActivity
 
 import com.google.firebase.auth.FirebaseAuth
 
@@ -31,12 +33,12 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId)
         {
-            R.id.menu_new_message->
+            R.id.menu_new_message ->
             {
                 val intent = Intent(this, NewMessageActivity::class.java)
                 startActivity(intent)
             }
-            R.id.menu_sign_out->
+            R.id.menu_sign_out ->
             {
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, RegisterActivity::class.java)

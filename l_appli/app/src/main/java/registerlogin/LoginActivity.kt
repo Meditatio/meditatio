@@ -1,4 +1,4 @@
-package com.example.meditatio_appli
+package registerlogin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.meditatio_appli.R
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity: AppCompatActivity() {
