@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/rounded_edittext_register_login"
+        android:background="@drawable/text_to"
         android:maxWidth="240dp"
         android:padding="16dp"
         android:text="This is my message that will wrap into multiples lines and keep going
-        I wonder what happens when the message is waaaaaay longer like from a looooooooot. Because the first
-message was kinda short, so let's try when it is longer."
+I wonder what happens when the message is waaaaaay longer"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        tools:layout_editor_absoluteY="13dp" />
+        tools:layout_editor_absoluteY="13dp"
+        android:textColor="@color/white"/>
 
     <ImageView
         android:id="@+id/imageView2"
