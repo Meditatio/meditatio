@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 import messages.LatestMessagesActivity
+import models.User
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -142,9 +143,4 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("RegisterActivity", "Failed to set value to the datebase: ${it.message}")
             }
     }
-}
-
-class User(val uid:String, val username:String, val profileImageUrl:String)
-{
-    constructor() : this("","","")
 }
