@@ -22,6 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.meditatio_appli.ui.theme.Meditatio_AppliTheme
 import registerlogin.RegisterActivity
+import youtubes.Meditation1
+import youtubes.YouTube1
+import youtubes.Youtube
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,13 +51,13 @@ fun ValidateButton() { // function to show the validate button
         shape = RoundedCornerShape(30.dp),
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            loadSecondPage(context)
+            loadYoutubePage(context)
         }) {
         Icon(
             imageVector = Icons.Default.Info,
-            contentDescription = "Youtube Page"
+            contentDescription = "Programme 1 Page"
         )
-        Text(text = "Youtube Page")
+        Text(text = "Programme 1 Page")
     }
 }
 @Composable
@@ -75,10 +78,35 @@ fun ValidateButton2() { // function to show the validate button
     }
 }
 
-private fun loadSecondPage(context: Context)
+@Composable
+fun ValidateButton3() { // function to show the validate button
+    val context = LocalContext.current
+
+    Button(
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            loadYoutube1Page(context)
+        }) {
+        Icon(
+            imageVector = Icons.Default.Info,
+            contentDescription = "Programme 2 Page"
+        )
+        Text(text = "Programme 2 Page")
+    }
+}
+
+private fun loadYoutubePage(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
     val intent = Intent(context, Youtube::class.java)
+    context.startActivity(intent)
+}
+
+private fun loadYoutube1Page(context: Context)
+{
+    Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
+    val intent = Intent(context, YouTube1::class.java)
     context.startActivity(intent)
 }
 
@@ -112,6 +140,7 @@ fun MainContent() { // function to show wrap all the previous functions
 
                 Spacer(modifier = Modifier.height(50.dp))
                 ValidateButton()
+                ValidateButton3()
                 ValidateButton2()
             }
         },

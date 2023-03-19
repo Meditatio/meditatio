@@ -7,7 +7,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Youtube">
+    tools:context="youtubes.Youtube">
     <include layout = "@layout/toolbar"
         android:id="@+id/toolbar"/>
     <com.google.android.youtube.player.YouTubePlayerView

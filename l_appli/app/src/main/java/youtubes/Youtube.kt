@@ -1,17 +1,14 @@
-package com.example.meditatio_appli
+package youtubes
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import com.example.meditatio_appli.MainActivity
+import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -57,16 +54,16 @@ class Youtube : YouTubeBaseActivity() {
     private lateinit var miniature9 : ImageView
     private lateinit var miniature10 : ImageView
 
-    lateinit var youtubePlayerInit1 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit6 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit7 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit8 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit9 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit10 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit1 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit6 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit7 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit8 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit9 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit10 : YouTubePlayer.OnInitializedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,7 +165,7 @@ class Youtube : YouTubeBaseActivity() {
         context.startActivity(intent)
     }
 
-    fun init(id : String) : YouTubePlayer.OnInitializedListener
+    private fun init(id : String) : YouTubePlayer.OnInitializedListener
     {
         val youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(

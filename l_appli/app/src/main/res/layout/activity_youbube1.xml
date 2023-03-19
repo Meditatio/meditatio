@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="409dp"
+    android:layout_height="729dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="youtubes.Youtube">
+        <include layout = "@layout/toolbar"
+            android:id="@+id/toolbar1"/>
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer11"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar1"
+            android:layout_marginVertical="50dp"/>
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer11"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer11"
+            app:layout_constraintEnd_toEndOf="@id/youtubePlayer11"
+            app:layout_constraintBottom_toBottomOf="@id/youtubePlayer11"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video1_perte_de_poids"
+            android:id= "@+id/miniature11"/>
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10 exercices à faire chaque matin pour perdre du poids !"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title11"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer22"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer11" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer22"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer22"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video2_perte_de_poids"
+            android:id= "@+id/miniature22" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perdez 3kg de gras en 1 semaine ! (10min cardio intense)"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title22"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer33"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer22" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer33"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer33"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video3_perte_de_poids"
+            android:id= "@+id/miniature33" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer33"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CARDIO BRÛLE-GRAISSE INTENSE (15 min)"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title33"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer44"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer33" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer44"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer44"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video4_perte_de_poids"
+            android:id= "@+id/miniature44" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer44"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HIIT débutant - Perdre 20 kilos - Exercices faciles sans saut 💪"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title44"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer55"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer44" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer55"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer55"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video5_perte_de_poids"
+            android:id= "@+id/miniature55" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer55"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Routine pour perdre du poids en 30 min !"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title55"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer66"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer55" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer66"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer66"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video6_perte_de_poids"
+            android:id= "@+id/miniature66" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer66"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No-excuses - Routine pour perdre du poids (20 min) - Fitness Master Class"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title66"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer77"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer66" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer77"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer77"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video7_perte_de_poids"
+            android:id= "@+id/miniature77" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer77"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BRÛLEUR DE CALORIES"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title77"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer88"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer77" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer88"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer88"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video8_perte_de_poids"
+            android:id= "@+id/miniature88" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer88"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cardio en musique pour maigrir sans régime 💪"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title88"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer99"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer88" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer99"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer99"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video9_perte_de_poids"
+            android:id= "@+id/miniature99" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perdre du bas du ventre (15 min) // Objectif Ventre Plat!"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title99"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtubePlayer100"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="100dp"
+            app:layout_constraintTop_toBottomOf="@id/youtubePlayer99" />
+        <ImageView
+            app:layout_constraintTop_toTopOf="@id/youtubePlayer100"
+            app:layout_constraintStart_toStartOf="@id/youtubePlayer100"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/video10_perte_de_poids"
+            android:id= "@+id/miniature100" />
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exercices pour maigrir et perdre du poids en 5minutes !"
+            android:layout_marginStart="16dp"
+            android:id= "@+id/title100"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

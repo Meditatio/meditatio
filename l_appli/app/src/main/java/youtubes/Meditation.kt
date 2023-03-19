@@ -1,15 +1,15 @@
-package com.example.meditatio_appli
+package youtubes
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.example.meditatio_appli.MainActivity
+import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -41,11 +41,11 @@ class meditation : YouTubeBaseActivity() {
     private lateinit var miniature4 : ImageView
     private lateinit var miniature5 : ImageView
 
-    lateinit var youtubePlayerInit1 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
-    lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit1 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
 
 
     @SuppressLint("MissingInflatedId")
@@ -61,17 +61,17 @@ class meditation : YouTubeBaseActivity() {
         icon1.setOnClickListener{loadYoutubePage(applicationContext)}
         title.setText("Programme 1 (Bien être)")
 
-        youTubePlayer1 = findViewById(R.id.youtubePlayer1)
-        youTubePlayer2 = findViewById(R.id.youtubePlayer2)
-        youTubePlayer3 = findViewById(R.id.youtubePlayer3)
-        youTubePlayer4 = findViewById(R.id.youtubePlayer4)
-        youTubePlayer5 = findViewById(R.id.youtubePlayer5)
+        youTubePlayer1 = findViewById(R.id.youtubePlayer111)
+        youTubePlayer2 = findViewById(R.id.youtubePlayer222)
+        youTubePlayer3 = findViewById(R.id.youtubePlayer333)
+        youTubePlayer4 = findViewById(R.id.youtubePlayer444)
+        youTubePlayer5 = findViewById(R.id.youtubePlayer555)
 
-        miniature1 = findViewById(R.id.miniature1)
-        miniature2 = findViewById(R.id.miniature2)
-        miniature3 = findViewById(R.id.miniature3)
-        miniature4 = findViewById(R.id.miniature4)
-        miniature5 = findViewById(R.id.miniature5)
+        miniature1 = findViewById(R.id.miniature111)
+        miniature2 = findViewById(R.id.miniature222)
+        miniature3 = findViewById(R.id.miniature333)
+        miniature4 = findViewById(R.id.miniature444)
+        miniature5 = findViewById(R.id.miniature555)
 
         youtubePlayerInit1 = init(VIDEO_ID_1)
         youTubePlayer1.setOnClickListener {
@@ -117,7 +117,7 @@ class meditation : YouTubeBaseActivity() {
         context.startActivity(intent)
     }
 
-    fun init(id : String) : YouTubePlayer.OnInitializedListener
+    private fun init(id : String) : YouTubePlayer.OnInitializedListener
     {
         val youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
