@@ -67,7 +67,7 @@ class YouTube1 : YouTubeBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_youtube)
+        setContentView(R.layout.activity_youtube1)
 
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)

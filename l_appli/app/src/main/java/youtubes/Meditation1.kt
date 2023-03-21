@@ -52,7 +52,7 @@ class Meditation1 : YouTubeBaseActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_meditation)
+        setContentView(R.layout.activity_meditation1)
 
 
         title = findViewById(R.id.toolbar_title)
