@@ -21,6 +21,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="youtubes.Meditation2"
+            android:exported="false" />
+        <activity
+            android:name="youtubes.YouTube2"
+            android:exported="false" />
+        <activity
             android:name="youtubes.YouTube1"
             android:exported="false" />
         <activity

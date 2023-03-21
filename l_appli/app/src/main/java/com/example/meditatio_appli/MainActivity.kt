@@ -24,6 +24,7 @@ import com.example.meditatio_appli.ui.theme.Meditatio_AppliTheme
 import registerlogin.RegisterActivity
 import youtubes.Meditation1
 import youtubes.YouTube1
+import youtubes.YouTube2
 import youtubes.Youtube
 
 class MainActivity : ComponentActivity() {
@@ -96,6 +97,24 @@ fun ValidateButton3() { // function to show the validate button
     }
 }
 
+@Composable
+fun ValidateButton4() { // function to show the validate button
+    val context = LocalContext.current
+
+    Button(
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            loadYoutube2Page(context)
+        }) {
+        Icon(
+            imageVector = Icons.Default.Info,
+            contentDescription = "Programme 3 Page"
+        )
+        Text(text = "Programme 3 Page")
+    }
+}
+
 private fun loadYoutubePage(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
@@ -107,6 +126,13 @@ private fun loadYoutube1Page(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
     val intent = Intent(context, YouTube1::class.java)
+    context.startActivity(intent)
+}
+
+private fun loadYoutube2Page(context: Context)
+{
+    Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
+    val intent = Intent(context, YouTube2::class.java)
     context.startActivity(intent)
 }
 
@@ -141,6 +167,7 @@ fun MainContent() { // function to show wrap all the previous functions
                 Spacer(modifier = Modifier.height(50.dp))
                 ValidateButton()
                 ValidateButton3()
+                ValidateButton4()
                 ValidateButton2()
             }
         },
