@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -60,7 +61,24 @@ class MainActivity : ComponentActivity() {
         }
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         if(prefs.getBoolean("daily_notifications", true)) scheduleNotification()
+        Log.d("TAG", "ee")
 
+    }
+
+    override fun onStart() {
+        Log.d("TAG", "e")
+
+        val notificationService = Intent(applicationContext, notification.NotificationService::class.java)
+        stopService(notificationService)
+        super.onStart()
+    }
+
+    override fun onStop() {
+
+        val notificationService = Intent(applicationContext, notification.NotificationService::class.java)
+        startService(notificationService)
+
+        super.onStop()
     }
 
     private fun scheduleNotification() {
