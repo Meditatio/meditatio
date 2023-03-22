@@ -3,12 +3,14 @@ package youtubes
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.example.meditatio_appli.MainActivity
 import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
@@ -74,30 +76,63 @@ class Meditation2 : YouTubeBaseActivity() {
         miniature4 = findViewById(R.id.miniature04)
         miniature5 = findViewById(R.id.miniature05)
 
-        youtubePlayerInit1 = init(VIDEO_ID_1)
-        youTubePlayer1.setOnClickListener {
-            youTubePlayer1.initialize(YOUTUBE_API_KEY,youtubePlayerInit1)
-            miniature1.visibility = View.INVISIBLE
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        if(prefs.getBoolean("youtube_in_app", true)) {
+
+            youtubePlayerInit1 = init(VIDEO_ID_1)
+            youTubePlayer1.setOnClickListener {
+                youTubePlayer1.initialize(YOUTUBE_API_KEY, youtubePlayerInit1)
+                miniature1.visibility = View.INVISIBLE
+            }
+            youtubePlayerInit2 = init(VIDEO_ID_2)
+            youTubePlayer2.setOnClickListener {
+                youTubePlayer2.initialize(YOUTUBE_API_KEY, youtubePlayerInit2)
+                miniature2.visibility = View.INVISIBLE
+            }
+            youtubePlayerInit3 = init(VIDEO_ID_3)
+            youTubePlayer3.setOnClickListener {
+                youTubePlayer3.initialize(YOUTUBE_API_KEY, youtubePlayerInit3)
+                miniature3.visibility = View.INVISIBLE
+            }
+            youtubePlayerInit4 = init(VIDEO_ID_4)
+            youTubePlayer4.setOnClickListener {
+                youTubePlayer4.initialize(YOUTUBE_API_KEY, youtubePlayerInit4)
+                miniature4.visibility = View.INVISIBLE
+            }
+            youtubePlayerInit5 = init(VIDEO_ID_5)
+            youTubePlayer5.setOnClickListener {
+                youTubePlayer5.initialize(YOUTUBE_API_KEY, youtubePlayerInit5)
+                miniature5.visibility = View.INVISIBLE
+            }
+
         }
-        youtubePlayerInit2 = init(VIDEO_ID_2)
-        youTubePlayer2.setOnClickListener {
-            youTubePlayer2.initialize(YOUTUBE_API_KEY,youtubePlayerInit2)
-            miniature2.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit3 = init(VIDEO_ID_3)
-        youTubePlayer3.setOnClickListener {
-            youTubePlayer3.initialize(YOUTUBE_API_KEY,youtubePlayerInit3)
-            miniature3.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit4 = init(VIDEO_ID_4)
-        youTubePlayer4.setOnClickListener {
-            youTubePlayer4.initialize(YOUTUBE_API_KEY,youtubePlayerInit4)
-            miniature4.visibility = View.INVISIBLE
-        }
-        youtubePlayerInit5 = init(VIDEO_ID_5)
-        youTubePlayer5.setOnClickListener {
-            youTubePlayer5.initialize(YOUTUBE_API_KEY,youtubePlayerInit5)
-            miniature5.visibility = View.INVISIBLE
+        else{
+
+            youTubePlayer1.setOnClickListener {
+                val uri: Uri = Uri.parse("https://youtu.be/$VIDEO_ID_1")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            youTubePlayer2.setOnClickListener {
+                val uri: Uri = Uri.parse("https://youtu.be/$VIDEO_ID_2")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            youTubePlayer3.setOnClickListener {
+                val uri: Uri = Uri.parse("https://youtu.be/$VIDEO_ID_3")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            youTubePlayer4.setOnClickListener {
+                val uri: Uri = Uri.parse("https://youtu.be/$VIDEO_ID_4")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            youTubePlayer5.setOnClickListener {
+                val uri: Uri = Uri.parse("https://youtu.be/$VIDEO_ID_5")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
         }
 
     }
