@@ -57,7 +57,9 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessage(){
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+        val fromId = FirebaseAuth.getInstance().uid
+        val toId = toUser?.uid
+        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val chatMessage = p0.getValue(ChatMessage::class.java)
@@ -102,7 +104,11 @@ class ChatLogActivity : AppCompatActivity() {
 
         if (fromId == null) return
 
-        val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+       // val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+
+
+        val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage = ChatMessage(reference.key!!, text, fromId, toId!!,
             System.currentTimeMillis() / 1000)
@@ -110,6 +116,14 @@ class ChatLogActivity : AppCompatActivity() {
             .addOnSuccessListener{
                 Log.d(TAG, "saved our chat message: ${reference.key}")
             }
+        toReference.setValue(chatMessage)
+            .addOnSuccessListener {
+                Log.d(TAG, "saved our chat message: ${reference.key}")
+                edittext_chat_log.text = ""
+                val recyclerview_chat_log = findViewById<RecyclerView>(R.id.recyclerview_chat_log)
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount -1)
+            }
+        toReference.setValue(chatMessage)
     }
 }
 
