@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meditatio_appli.R
 import registerlogin.RegisterActivity
@@ -24,6 +25,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import models.ChatMessage
 import models.User
+import views.LatestMessageRow
 
 class LatestMessagesActivity : AppCompatActivity() {
 
@@ -36,6 +38,7 @@ class LatestMessagesActivity : AppCompatActivity() {
 
         val recyclerview_latest_messages = findViewById<RecyclerView>(R.id.recyclerview_latest_messages)
         recyclerview_latest_messages.adapter = adapter
+        recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
 
         //setupDummyRows()
         listenForLatestMessages()
@@ -46,46 +49,6 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     }
 
-    class LatestMessageRow(val chatMessage: ChatMessage) : Item<GroupieViewHolder>(){
-
-        override fun bind(p0: GroupieViewHolder, p1: Int) {
-            val message_textview_latest_message = p0.itemView.findViewById<TextView>(R.id.message_textview_latest_message)
-            message_textview_latest_message.text = chatMessage.text
-
-            val username_textview_latest_message = p0.itemView.findViewById<TextView>(R.id.username_textview_latest_message)
-
-
-            val chatPartnerId:String
-            if (chatMessage.fromId == FirebaseAuth.getInstance().uid)
-            {
-                chatPartnerId = chatMessage.toId
-            }
-            else
-            {
-                chatPartnerId = chatMessage.fromId
-            }
-            val ref = FirebaseDatabase.getInstance().getReference("/users/$chatPartnerId")
-            ref.addListenerForSingleValueEvent(object: ValueEventListener
-            {
-                override fun onDataChange(p2: DataSnapshot)
-                {
-                    val user = p2.getValue(User::class.java)
-                    username_textview_latest_message.text = user?.username
-
-                    val targetImageView = p0.itemView.findViewById<ImageView>(R.id.imageview_latest_message)
-                    Picasso.get().load(user?.profileImageUrl).into(targetImageView)
-                }
-                override fun onCancelled(p2: DatabaseError)
-                {
-
-                }
-            })
-
-        }
-        override fun getLayout(): Int {
-            return R.layout.latest_message_row
-        }
-    }
 
     val latestMessagesMap = HashMap<String, ChatMessage>()
 
