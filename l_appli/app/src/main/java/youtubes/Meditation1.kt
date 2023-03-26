@@ -24,7 +24,7 @@ class Meditation1 : YouTubeBaseActivity() {
     private lateinit var icon1 : ImageView
     private lateinit var title : TextView
 
-    private val YOUTUBE_API_KEY = "AIzaSyA-gcsPXsUsTFq2ByPxdKUlI0IBd7aNQi8"
+    /*private val YOUTUBE_API_KEY = "AIzaSyA-gcsPXsUsTFq2ByPxdKUlI0IBd7aNQi8"
 
     private val VIDEO_ID_1 = "PTsk8VHCZjM"
     private val VIDEO_ID_2 = "TPW8y-Wj_KE"
@@ -48,7 +48,7 @@ class Meditation1 : YouTubeBaseActivity() {
     private lateinit var youtubePlayerInit2 : YouTubePlayer.OnInitializedListener
     private lateinit var youtubePlayerInit3 : YouTubePlayer.OnInitializedListener
     private lateinit var youtubePlayerInit4 : YouTubePlayer.OnInitializedListener
-    private lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit5 : YouTubePlayer.OnInitializedListener*/
 
 
     @SuppressLint("MissingInflatedId")
@@ -64,7 +64,7 @@ class Meditation1 : YouTubeBaseActivity() {
         icon1.setOnClickListener{loadYoutubePage(applicationContext)}
         title.setText("Programme 2 (Pleine Conscience)")
 
-        youTubePlayer1 = findViewById(R.id.youtubePlayer01)
+        /*youTubePlayer1 = findViewById(R.id.youtubePlayer01)
         youTubePlayer2 = findViewById(R.id.youtubePlayer02)
         youTubePlayer3 = findViewById(R.id.youtubePlayer03)
         youTubePlayer4 = findViewById(R.id.youtubePlayer04)
@@ -133,7 +133,7 @@ class Meditation1 : YouTubeBaseActivity() {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             }
-        }
+        }*/
 
     }
 
@@ -153,7 +153,7 @@ class Meditation1 : YouTubeBaseActivity() {
         context.startActivity(intent)
     }
 
-    private fun init(id : String) : YouTubePlayer.OnInitializedListener
+    /*private fun init(id : String) : YouTubePlayer.OnInitializedListener
     {
         val youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
@@ -172,5 +172,5 @@ class Meditation1 : YouTubeBaseActivity() {
             }
         }
         return youtubePlayerInit
-    }
+    }*/
 }

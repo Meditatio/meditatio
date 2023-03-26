@@ -22,7 +22,7 @@ class Youtube : YouTubeBaseActivity() {
     private lateinit var icon1 : ImageView
     private lateinit var title : TextView
 
-    private val YOUTUBE_API_KEY = "AIzaSyA-gcsPXsUsTFq2ByPxdKUlI0IBd7aNQi8"
+    /*private val YOUTUBE_API_KEY = "AIzaSyA-gcsPXsUsTFq2ByPxdKUlI0IBd7aNQi8"
 
     private val VIDEO_ID_1 = "1Ls6ImJBXVY"
     private val VIDEO_ID_2 = "64sCja7s6lw"
@@ -65,7 +65,7 @@ class Youtube : YouTubeBaseActivity() {
     private lateinit var youtubePlayerInit7 : YouTubePlayer.OnInitializedListener
     private lateinit var youtubePlayerInit8 : YouTubePlayer.OnInitializedListener
     private lateinit var youtubePlayerInit9 : YouTubePlayer.OnInitializedListener
-    private lateinit var youtubePlayerInit10 : YouTubePlayer.OnInitializedListener
+    private lateinit var youtubePlayerInit10 : YouTubePlayer.OnInitializedListener*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +78,7 @@ class Youtube : YouTubeBaseActivity() {
         icon1.setOnClickListener{loadMeditationPage(applicationContext)}
         title.setText("Programme 1 (Remise en Forme)")
 
-        youTubePlayer1 = findViewById(R.id.youtubePlayer1)
+        /*youTubePlayer1 = findViewById(R.id.youtubePlayer1)
         youTubePlayer2 = findViewById(R.id.youtubePlayer2)
         youTubePlayer3 = findViewById(R.id.youtubePlayer3)
         youTubePlayer4 = findViewById(R.id.youtubePlayer4)
@@ -206,7 +206,7 @@ class Youtube : YouTubeBaseActivity() {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             }
-        }
+        }*/
     }
 
     private fun loadMeditationPage(context: Context)
@@ -225,7 +225,7 @@ class Youtube : YouTubeBaseActivity() {
         context.startActivity(intent)
     }
 
-    private fun init(id : String) : YouTubePlayer.OnInitializedListener
+    /*private fun init(id : String) : YouTubePlayer.OnInitializedListener
     {
         val youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
@@ -244,5 +244,5 @@ class Youtube : YouTubeBaseActivity() {
             }
         }
         return youtubePlayerInit
-    }
+    }*/
 }

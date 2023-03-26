@@ -1,137 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="409dp"
-    android:layout_height="729dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
+android:layout_width="409dp"
+android:layout_height="729dp"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="youtubes.Meditation1"
+    android:orientation="vertical">
+    <include layout = "@layout/toolbar"
+        android:id="@+id/toolbar3"/>
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerView"
+        app:layout_constraintTop_toBottomOf="@id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_height="250dp"
+        app:videoId="PTsk8VHCZjM"
+        app:showFullScreenButton="true"
+        app:autoPlay="false"
+        />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="youtubes.Meditation1">
-        <include layout = "@layout/toolbar"
-            android:id="@+id/toolbar3"/>
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtubePlayer01"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:layout_constraintTop_toBottomOf="@id/toolbar3"
-            android:layout_marginVertical="50dp"/>
-        <ImageView
-            app:layout_constraintTop_toTopOf="@id/youtubePlayer01"
-            app:layout_constraintStart_toStartOf="@id/youtubePlayer01"
-            app:layout_constraintEnd_toEndOf="@id/youtubePlayer01"
-            app:layout_constraintBottom_toBottomOf="@id/youtubePlayer01"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/video1_meditation_pleine_conscience"
-            android:id= "@+id/miniature01"/>
-        <TextView
-            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="10 minutes de MÉDITATION en pleine conscience pour débutants 🎧🎙 Cédric Michel"
-            android:layout_marginStart="16dp"
-            android:id= "@+id/title01"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+        android:text="10 minutes de MÉDITATION en pleine conscience pour débutants 🎧🎙 Cédric Michel"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:id= "@+id/title01"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtubePlayer02"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="100dp"
-            app:layout_constraintTop_toBottomOf="@id/youtubePlayer01" />
-        <ImageView
-            app:layout_constraintTop_toTopOf="@id/youtubePlayer02"
-            app:layout_constraintStart_toStartOf="@id/youtubePlayer02"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/video2_meditation_pleine_conscience"
-            android:id= "@+id/miniature02" />
-        <TextView
-            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Méditation Pleine Conscience + Visualisation très Relaxante 🎙 Cédric Michel"
-            android:layout_marginStart="16dp"
-            android:id= "@+id/title02"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerView1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="75dp"
+        app:videoId="29u6RgnZe7g"
+        app:showFullScreenButton="true"
+        app:autoPlay="false"
+        />
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtubePlayer03"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="100dp"
-            app:layout_constraintTop_toBottomOf="@id/youtubePlayer02" />
-        <ImageView
-            app:layout_constraintTop_toTopOf="@id/youtubePlayer03"
-            app:layout_constraintStart_toStartOf="@id/youtubePlayer03"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/video3_meditation_pleine_conscience"
-            android:id= "@+id/miniature03" />
-        <TextView
-            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Méditation de pleine conscience pour l'anxiété (10 minutes)"
-            android:layout_marginStart="16dp"
-            android:id= "@+id/title03"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Méditation guidée de pleine conscience - 30 mn | FLOCON DE ZEN"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:id= "@+id/title02"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtubePlayer04"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="100dp"
-            app:layout_constraintTop_toBottomOf="@id/youtubePlayer03" />
-        <ImageView
-            app:layout_constraintTop_toTopOf="@id/youtubePlayer04"
-            app:layout_constraintStart_toStartOf="@id/youtubePlayer04"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/video4_meditation_pleine_conscience"
-            android:id= "@+id/miniature04" />
-        <TextView
-            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Méditation Guidée de Pleine Conscience | Vibrations positives"
-            android:layout_marginStart="16dp"
-            android:id= "@+id/title04"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerView2"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="75dp"
+        app:videoId="Qh8FM0UtTD4"
+        app:showFullScreenButton="true"
+        app:autoPlay="false"
+        />
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtubePlayer05"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="100dp"
-            app:layout_constraintTop_toBottomOf="@id/youtubePlayer04" />
-        <ImageView
-            app:layout_constraintTop_toTopOf="@id/youtubePlayer05"
-            app:layout_constraintStart_toStartOf="@id/youtubePlayer05"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/video5_meditation_pleine_conscience"
-            android:id= "@+id/miniature05" />
-        <TextView
-            app:layout_constraintTop_toBottomOf="@+id/youtubePlayer05"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Se Libérer de ses Pensées | Méditation Guidée Pleine conscience"
-            android:layout_marginStart="16dp"
-            android:id= "@+id/title05"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Méditation de pleine conscience pour l'anxiété (10 minutes)"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:id= "@+id/title03"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerView3"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="75dp"
+        app:videoId="lMSnLU45s_c"
+        app:showFullScreenButton="true"
+        app:autoPlay="false"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Méditation Guidée de Pleine Conscience | Vibrations positives"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:id= "@+id/title04"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerView4"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="75dp"
+        app:videoId="aAKj8YHY6ho"
+        app:showFullScreenButton="true"
+        app:autoPlay="false"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se Libérer de ses Pensées | Méditation Guidée Pleine conscience"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:id= "@+id/title05"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+</LinearLayout>
 </ScrollView>
