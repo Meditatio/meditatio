@@ -48,6 +48,23 @@ class LoginActivity: AppCompatActivity() {
         backToRegister.setOnClickListener{
             finish()
         }
+        val reset_password = findViewById<TextView>(R.id.reset_password)
+        reset_password.setOnClickListener{
+            Log.d("reset", "email to reset was send")
+            val emailEditText = findViewById<EditText>(R.id.email_edittext_login)
+            val email = emailEditText.text.toString()
+            if (email.isEmpty())
+            {
+                Toast.makeText(this, "Please enter your email above", Toast.LENGTH_SHORT).show()
+
+            }
+            else
+            {
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                Toast.makeText(this, "An email has been sent to $email", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
 }
