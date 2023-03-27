@@ -1,6 +1,5 @@
 package messages
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +7,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 //import androidx.recyclerview.widget.RecyclerView.findNestedRecyclerView
 import com.example.meditatio_appli.R
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +16,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import models.ChatMessage
@@ -136,21 +133,6 @@ class ChatLogActivity : AppCompatActivity() {
 class ChatFromItem(val text:String, val user: User): Item<GroupieViewHolder>()
 {
     override fun bind(p0: GroupieViewHolder, p1: Int) {
-        val textViewFromRow = p0.itemView.findViewById<TextView>(R.id.textView_from_row)
-        textViewFromRow.text = text
-
-        // load our user image into the star
-        val uri = user.profileImageUrl
-        val targetImageView = p0.itemView.findViewById<ImageView>(R.id.imageView_from_row)
-        Picasso.get().load(uri).into(targetImageView)
-    }
-    override fun getLayout(): Int {
-        return R.layout.chat_from_row
-    }
-}
-class ChatToItem(val text: String, val user: User): Item<GroupieViewHolder>()
-{
-    override fun bind(p0: GroupieViewHolder, p1: Int) {
         val textViewFromRow = p0.itemView.findViewById<TextView>(R.id.textView_to_row)
         textViewFromRow.text = text
 
@@ -159,8 +141,23 @@ class ChatToItem(val text: String, val user: User): Item<GroupieViewHolder>()
         val targetImageView = p0.itemView.findViewById<ImageView>(R.id.imageView_to_row)
         Picasso.get().load(uri).into(targetImageView)
     }
-
     override fun getLayout(): Int {
         return R.layout.chat_to_row
+    }
+}
+class ChatToItem(val text: String, val user: User): Item<GroupieViewHolder>()
+{
+    override fun bind(p0: GroupieViewHolder, p1: Int) {
+        val textViewFromRow = p0.itemView.findViewById<TextView>(R.id.textView_from_row)
+        textViewFromRow.text = text
+
+        // load our user image into the star
+        val uri = user.profileImageUrl
+        val targetImageView = p0.itemView.findViewById<ImageView>(R.id.imageView_from_row)
+        Picasso.get().load(uri).into(targetImageView)
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.chat_from_row
     }
 }
