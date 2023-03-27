@@ -15,7 +15,7 @@ import models.ChatMessage
 import models.User
 
 class LatestMessageRow(val chatMessage: ChatMessage) : Item<GroupieViewHolder>(){
-
+    var chatPartnerUser: User? = null
     override fun bind(p0: GroupieViewHolder, p1: Int) {
         val message_textview_latest_message = p0.itemView.findViewById<TextView>(R.id.message_textview_latest_message)
         message_textview_latest_message.text = chatMessage.text
@@ -37,11 +37,11 @@ class LatestMessageRow(val chatMessage: ChatMessage) : Item<GroupieViewHolder>()
         {
             override fun onDataChange(p2: DataSnapshot)
             {
-                val user = p2.getValue(User::class.java)
-                username_textview_latest_message.text = user?.username
+                chatPartnerUser = p2.getValue(User::class.java)
+                username_textview_latest_message.text = chatPartnerUser?.username
 
                 val targetImageView = p0.itemView.findViewById<ImageView>(R.id.imageview_latest_message)
-                Picasso.get().load(user?.profileImageUrl).into(targetImageView)
+                Picasso.get().load(chatPartnerUser?.profileImageUrl).into(targetImageView)
             }
             override fun onCancelled(p2: DatabaseError)
             {

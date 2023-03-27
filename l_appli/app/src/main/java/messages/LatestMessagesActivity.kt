@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import messages.NewMessageActivity.Companion.USER_KEY
 import models.ChatMessage
 import models.User
 import views.LatestMessageRow
@@ -31,6 +32,7 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     companion object{
         var currentUser: User? = null
+        val TAG = "LatestMessages"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,15 @@ class LatestMessagesActivity : AppCompatActivity() {
         val recyclerview_latest_messages = findViewById<RecyclerView>(R.id.recyclerview_latest_messages)
         recyclerview_latest_messages.adapter = adapter
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+
+        adapter.setOnItemClickListener{item, view->
+            Log.d(TAG, "123")
+            val intent = Intent(this, ChatLogActivity::class.java)
+
+            val row = item as LatestMessageRow
+            intent.putExtra(USER_KEY, row.chatPartnerUser)
+            startActivity(intent)
+        }
 
         //setupDummyRows()
         listenForLatestMessages()

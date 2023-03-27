@@ -78,6 +78,7 @@ class ChatLogActivity : AppCompatActivity() {
                         }
                     }
                 }
+                findViewById<RecyclerView>(R.id.recyclerview_chat_log).scrollToPosition(adapter.itemCount-1)
             }
 
             override fun onCancelled(error: DatabaseError) {
