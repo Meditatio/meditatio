@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.meditatio_appli.MainActivity
 import com.example.meditatio_appli.R
 import com.google.firebase.auth.FirebaseAuth
 import messages.LatestMessagesActivity
@@ -36,7 +37,7 @@ class LoginActivity: AppCompatActivity() {
 
                     // le code suivant n'ai pas dans le tuto !!!!
                     // je l'ai ajouté pour pouvoir le login avec un compte déja créer pour test facilement
-                    val intent = Intent(this, LatestMessagesActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                 }

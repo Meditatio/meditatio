@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.preference.PreferenceManager
 import com.example.meditatio_appli.ui.theme.Meditatio_AppliTheme
 import com.google.android.exoplayer2.util.NotificationUtil.createNotificationChannel
+import messages.LatestMessagesActivity
 import notification.channelID
 import notification.messageExtra
 import notification.notificationID
@@ -241,7 +242,7 @@ private fun loadYoutube2Page(context: Context)
 
 private fun loadMessagePage(context: Context)
 {
-    val intent = Intent(context, RegisterActivity::class.java)
+    val intent = Intent(context, LatestMessagesActivity::class.java)
     context.startActivity(intent)
 }
 
