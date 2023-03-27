@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.example.meditatio_appli.MainActivity
 import com.example.meditatio_appli.R
 import registerlogin.RegisterActivity
 
@@ -30,11 +31,13 @@ import views.LatestMessageRow
 
 class LatestMessagesActivity : AppCompatActivity() {
 
+
     companion object{
         var currentUser: User? = null
         val TAG = "LatestMessages"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.title = "Conversation"
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
 
@@ -141,8 +144,8 @@ class LatestMessagesActivity : AppCompatActivity() {
             }
             R.id.menu_sign_out ->
             {
-                FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, RegisterActivity::class.java)
+                //FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
