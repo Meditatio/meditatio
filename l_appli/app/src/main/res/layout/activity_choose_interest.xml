@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context="registerlogin.ChooseInterest">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="It's time to choose the activity you want to focus on"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/button_meditation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button_selector"
+        android:checked="false"
+        android:paddingLeft="50px"
+        android:paddingRight="50px"
+        android:text="Meditation"
+        android:textAllCaps="false"
+        android:textOff="Meditation"
+        android:textOn="Meditation"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ToggleButton
+        android:id="@+id/button_bulking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button_selector"
+        android:text="Bulking"
+        android:textOff="Bulking"
+        android:textOn="Bulking"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/button_meditation"
+        app:layout_constraintStart_toStartOf="@+id/button_meditation"
+        app:layout_constraintTop_toBottomOf="@+id/button_meditation"
+        android:textAllCaps="false"/>
+
+    <ToggleButton
+        android:id="@+id/button_cutting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button_selector"
+        android:text="Cutting"
+        android:textOff="Cutting"
+        android:textOn="Cutting"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/button_bulking"
+        app:layout_constraintStart_toStartOf="@+id/button_bulking"
+        app:layout_constraintTop_toBottomOf="@+id/button_bulking"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/button_validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:paddingLeft="20px"
+        android:paddingRight="20px"
+        android:text="Let's Start !"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_cutting" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

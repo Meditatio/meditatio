@@ -35,11 +35,7 @@
             android:name="settings.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.Meditatio_AppliCompatSettings">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.meditatio_appli.MainActivity" />
-        </activity>
+            android:theme="@style/Theme.Meditatio_AppliCompat" />
         <activity
             android:name="youtubes.Meditation2"
             android:exported="false" />
@@ -79,11 +75,11 @@
             android:name="registerlogin.RegisterActivity"
             android:exported="true"
             android:theme="@style/Theme.Meditatio_AppliCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
         </activity>
         <activity
             android:name="registerlogin.LoginActivity"
@@ -98,6 +94,10 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Meditatio_Appli">
         </activity>
+        <activity
+            android:name="registerlogin.ChooseInterest"
+            android:exported="false"
+            android:theme="@style/Theme.Meditatio_AppliCompat"/>
     </application>
 
 </manifest>
