@@ -98,7 +98,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             .addOnFailureListener{
                 Log.d("RegisterActivity", "Failed to create user: ${it.message}")
-                Toast.makeText(this, "Email and Password are required",
+                Toast.makeText(this, "Email and Password are required or the account already exists",
                     Toast.LENGTH_SHORT).show()
             }
 
