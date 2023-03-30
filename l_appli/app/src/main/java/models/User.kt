@@ -5,21 +5,23 @@ import android.os.Parcelable
 import androidx.versionedparcelable.VersionedParcelize
 
 @VersionedParcelize
-class User(val uid: String?, val username: String?, val profileImageUrl: String?): Parcelable
+class User(val uid: String?, val username: String?, val profileImageUrl: String?, var interest:String?): Parcelable
 {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readString(),
     ) {
     }
 
-    constructor() : this("","","")
+    constructor() : this("","","","")
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(uid)
         parcel.writeString(username)
         parcel.writeString(profileImageUrl)
+        parcel.writeString(interest)
     }
 
     override fun describeContents(): Int {

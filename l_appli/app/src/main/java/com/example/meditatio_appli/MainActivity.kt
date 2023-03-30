@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.preference.PreferenceManager
+import capteurs.Objectifs
 import com.example.meditatio_appli.ui.theme.Meditatio_AppliTheme
 import com.google.android.exoplayer2.util.NotificationUtil.createNotificationChannel
 import messages.LatestMessagesActivity
@@ -219,6 +220,24 @@ fun ValidateButton5() { // function to show the validate button
     }
 }
 
+@Composable
+fun ValidateButton6() { // function to show the validate button
+    val context = LocalContext.current
+
+    Button(
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            loadObjectifsPage(context)
+        }) {
+        Icon(
+            imageVector = Icons.Default.Info,
+            contentDescription = "Objectifs"
+        )
+        Text(text = "Objectifs")
+    }
+}
+
 private fun loadYoutubePage(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
@@ -252,6 +271,12 @@ private fun loadSettingsPage(context: Context)
     context.startActivity(intent)
 }
 
+private fun loadObjectifsPage(context: Context)
+{
+    val intent = Intent(context, Objectifs::class.java)
+    context.startActivity(intent)
+}
+
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainContent() { // function to show wrap all the previous functions
@@ -280,6 +305,7 @@ fun MainContent() { // function to show wrap all the previous functions
                 ValidateButton4()
                 ValidateButton2()
                 ValidateButton5()
+                ValidateButton6()
             }
         },
         //bottomBar = { BottomAppBar(backgroundColor = MaterialTheme.colors.primary) { Text("Bottom Bar") } }

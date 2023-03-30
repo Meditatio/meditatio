@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.preference.PreferenceManager
+import capteurs.Objectifs
 import com.example.meditatio_appli.MainActivity
 import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
