@@ -76,7 +76,25 @@ class UserItem(val user: User): Item<GroupieViewHolder>()
     override fun bind(p0: GroupieViewHolder, p1: Int)
     {
         p0.itemView.findViewById<TextView>(R.id.usernametextview_newmessage).text = user.username
-
+        var role = ""
+        if (user.coach =="false"){
+            if (user.interest=="fitness") {
+                role = "fitness"
+            } else if (user.interest=="bulking"){
+                role = "bulking"
+            } else{
+                role = "cutting"
+            }
+        } else {
+            if (user.interest=="fitness") {
+                role = "fitness coach"
+            } else if (user.interest=="bulking"){
+                role = "bulking coach"
+            } else{
+                role = "cutting coach"
+            }
+        }
+        p0.itemView.findViewById<TextView>(R.id.usernametextview_role).text = role
         Picasso.get().load(user.profileImageUrl).into(p0.itemView.findViewById<ImageView>(R.id.imageView_newmessagerow))
     }
 
