@@ -10,7 +10,7 @@ xmlns:tools="http://schemas.android.com/tools">
     android:layout_height="wrap_content"
     tools:context="youtubes.YouTube2"
     android:orientation="vertical">
-    <include layout = "@layout/toolbar"
+    <include layout = "@layout/tool_bar"
         android:id="@+id/toolbar3"/>
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
