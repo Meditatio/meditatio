@@ -10,11 +10,10 @@ import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.meditatio_appli.MainActivity
 import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
@@ -24,10 +23,13 @@ import messages.ChatLogActivity
 class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
 
+    private lateinit var list : ListView
     private lateinit var icon : ImageView
-    private lateinit var icon1 : ImageView
     private lateinit var title : TextView
-    private lateinit var reset : ImageView
+    private lateinit var adapter : ArrayAdapter<String>
+    private lateinit var array : Array<String>
+    private lateinit var array1 : Array<Boolean>
+    private lateinit var toolbar: Toolbar
 
     private var sensorManager : SensorManager? = null
 
@@ -47,17 +49,21 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_objectifs)
 
+        toolbar = findViewById(R.id.toolbar3)
+        setActionBar(toolbar)
+        array = arrayOf("Sport","Manger équilibré","Prendre l'air","Méditation")
+        array1 = arrayOf(false,false,false,false)
+        adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,array)
+        list = findViewById(R.id.listView_data)
+        list.adapter = adapter
         circularProgressBar = findViewById(R.id.circularProgressBar)
         stepsTaken = findViewById(R.id.stepTaken)
         score = findViewById(R.id.Score)
-        reset = findViewById(R.id.reset)
         nbVerre = findViewById(R.id.nbVerre)
         buttonPlus = findViewById(R.id.buttonPlus)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)
-        icon1 = findViewById(R.id.icon1)
-        icon1.visibility = View.INVISIBLE
         icon.setOnClickListener{loadFirstPage(applicationContext)}
         title.setText("My Objectives")
 
@@ -72,16 +78,6 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
                 score.setText("My Score : "+ Score.toString())
                 nbVerre.setText(NbVerre.toString())
             }
-        }
-        reset.setOnClickListener()
-        {
-            totalSteps = 0
-            Score = 0
-            NbVerre = 0
-            stepsTaken.setText("0")
-            score.setText("My Score : "+ Score.toString())
-            nbVerre.setText("0")
-            saveData()
         }
     }
 
@@ -114,9 +110,47 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
     }
 
-    fun getContext() : Context
-    {
-        return this
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_objectif,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_done)
+        {
+            for (i in 0 until list.count) {
+                if (list.isItemChecked(i))
+                {
+                    if(!array1[i])
+                        Score+=1000
+                    array1[i] = true
+                    score.setText("My Score : "+ Score.toString())
+                }
+                else
+                {
+                    if(array1[i])
+                        Score-=1000
+                    array1[i] = false
+                    score.setText("My Score : "+ Score.toString())
+                }
+                saveData()
+            }
+        }
+        else if (item.itemId == R.id.item_reset)
+        {
+            totalSteps = 0
+            Score = 0
+            NbVerre = 0
+            array1 = arrayOf(false,false,false,false)
+            stepsTaken.setText("0")
+            for (i in 0 until list.count) {
+                list.setItemChecked(i,false)
+            }
+            score.setText("My Score : "+ Score.toString())
+            nbVerre.setText("0")
+            saveData()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun saveData() {
@@ -125,6 +159,10 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         editor.putFloat("key1",totalSteps.toFloat())
         editor.putFloat("key2",Score.toFloat())
         editor.putFloat("key3",NbVerre.toFloat())
+        editor.putBoolean("key4",array1[0])
+        editor.putBoolean("key5",array1[1])
+        editor.putBoolean("key6",array1[2])
+        editor.putBoolean("key7",array1[3])
         editor.apply()
     }
 
@@ -133,9 +171,17 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         val saveNumber = sharedPreferences.getFloat("key1",0f)
         val saveNumber1 = sharedPreferences.getFloat("key2",0f)
         val saveNumber2 = sharedPreferences.getFloat("key3",0f)
+        val saveNumber3 = sharedPreferences.getBoolean("key4",false)
+        val saveNumber4 = sharedPreferences.getBoolean("key5",false)
+        val saveNumber5 = sharedPreferences.getBoolean("key6",false)
+        val saveNumber6 = sharedPreferences.getBoolean("key7",false)
         totalSteps = saveNumber.toInt()
         Score = saveNumber1.toInt()
         NbVerre = saveNumber2.toInt()
+        array1 = arrayOf(saveNumber3,saveNumber4,saveNumber5,saveNumber6)
+        for (i in 0 until list.count) {
+            list.setItemChecked(i,array1[i])
+        }
         score.setText("My Score : "+ Score.toString())
         nbVerre.setText(NbVerre.toString())
         stepsTaken.setText(totalSteps.toString())

@@ -41,7 +41,25 @@ class ChatLogActivity : AppCompatActivity() {
         recycleview_chat_log.adapter = adapter
 
         toUser = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        supportActionBar?.title = toUser?.username
+        var role = ""
+        if (toUser?.coach =="false"){
+            if (toUser?.interest=="fitness") {
+                role = "fitness"
+            } else if (toUser?.interest=="bulking"){
+                role = "bulking"
+            } else{
+                role = "cutting"
+            }
+        } else {
+            if (toUser?.interest == "fitness") {
+                role = "fitness coach"
+            } else if (toUser?.interest == "bulking") {
+                role = "bulking coach"
+            } else {
+                role = "cutting coach"
+            }
+        }
+        supportActionBar?.title = toUser?.username + " | " + role
 
         //setupDummyData()
         listenForMessage()
