@@ -51,7 +51,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
         toolbar = findViewById(R.id.toolbar3)
         setActionBar(toolbar)
-        array = arrayOf("Sport","Manger équilibré","Prendre l'air","Méditation")
+        array = arrayOf("Sport","Eat healthy","To take some fresh air","Meditation")
         array1 = arrayOf(false,false,false,false)
         adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,array)
         list = findViewById(R.id.listView_data)
@@ -70,7 +70,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         loadData()
         buttonPlus.setOnClickListener()
         {
-            if (NbVerre < 9)
+            if (NbVerre < 10)
             {
                 NbVerre++
                 Score += 500

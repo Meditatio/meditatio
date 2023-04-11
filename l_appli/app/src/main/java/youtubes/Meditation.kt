@@ -37,7 +37,7 @@ class meditation : YouTubeBaseActivity() {
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)
         icon.setOnClickListener{loadFirstPage(applicationContext)}
-        title.setText("Bien être")
+        title.setText("Welfare")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

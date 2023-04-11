@@ -35,7 +35,7 @@ class YouTube2 : YouTubeBaseActivity() {
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)
         icon.setOnClickListener{loadFirstPage(applicationContext)}
-        title.setText("Prise de Masse")
+        title.setText("Bulking")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

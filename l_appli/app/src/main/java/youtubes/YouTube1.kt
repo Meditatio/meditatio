@@ -34,7 +34,7 @@ class YouTube1 : YouTubeBaseActivity() {
         title = findViewById(R.id.toolbar_title)
         icon = findViewById(R.id.icon)
         icon.setOnClickListener{loadFirstPage(applicationContext)}
-        title.setText("Perte de poids")
+        title.setText("Cutting")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

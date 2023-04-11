@@ -1,88 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="900dp"
+    android:background="@drawable/beige_background"
     tools:context="capteurs.Objectifs"
     android:orientation="vertical">
-    <include layout = "@layout/tool_bar"
+    <include layout = "@layout/tools"
         android:id="@+id/toolbar3"/>
 
-    <com.mikhaellopez.circularprogressbar.CircularProgressBar
-        android:id="@+id/circularProgressBar"
-        android:layout_width="166dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="125dp"
-        app:cpb_background_progressbar_color="@color/blanc"
-        app:cpb_background_progressbar_width="20dp"
-        app:cpb_progress_direction="to_right"
-        app:cpb_progress_max="10000"
-        app:cpb_progressbar_color="@color/beige"
-        app:cpb_progressbar_width="15dp"
-        app:cpb_round_border="true"/>
-
-    <TextView
-        android:id="@+id/stepTaken"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="165dp"
-        android:text="0"
-        android:textColor="@color/beige"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/10000"
-        android:layout_marginStart="160dp"
-        android:layout_below="@+id/stepTaken"
-        android:id= "@+id/stepMax"
-        android:textColor="@color/beige"
-        android:textSize="30sp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Score : 0"
-        android:layout_marginTop="75dp"
-        android:layout_marginStart="125dp"
-        android:id= "@+id/Score"
-        android:textColor="@color/beige"
-        android:textSize="30sp"/>
-
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="285dp"
-        android:layout_marginStart="100dp"
-        android:src="@drawable/baseline_plus_one_24"
-        android:id= "@+id/buttonPlus" />
-
-    <ImageView
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="250dp"
-        android:src="@drawable/verre_deau"
-        android:id= "@+id/Verre" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="60dp"
-        android:id= "@+id/nbVerre"
-        android:textColor="@color/black"
-        android:textSize="40sp"/>
-
-    <ListView
-        android:id= "@+id/listView_data"
-        android:layout_marginTop="400dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice" />
+        android:layout_height="100dp"
+        android:layout_below="@+id/toolbar3"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/beige_clair_background">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Score : 0"
+            android:id= "@+id/Score"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score"
+            android:id= "@+id/Score1"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="15dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background2"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/background1"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/beige_clair_background">
 
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar"
+            android:layout_width="166dp"
+            android:layout_height="164dp"
+            app:cpb_background_progressbar_color="@color/blanc"
+            app:cpb_background_progressbar_width="20dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progress_max="10000"
+            app:cpb_progressbar_color="#ab997b"
+            app:cpb_progressbar_width="15dp"
+            app:cpb_round_border="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/stepTaken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10000"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/stepTaken"
+            android:id= "@+id/stepMax"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step Counter"
+            android:id= "@+id/StepCounter"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="15dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background3"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/background2"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/beige_clair_background">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:src="@drawable/verre_deau"
+            android:id= "@+id/Verre"
+            android:layout_marginRight="50dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id= "@+id/nbVerre"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="200dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/baseline_plus_one_24"
+            android:id= "@+id/buttonPlus"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glass Counter"
+            android:id= "@+id/VerreCounter"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="15dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background4"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/background3"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/beige_clair_background">
+
+        <ListView
+            android:id= "@+id/listView_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="multipleChoice"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Do List"
+            android:id= "@+id/ToDoList"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="15dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
+</ScrollView>
