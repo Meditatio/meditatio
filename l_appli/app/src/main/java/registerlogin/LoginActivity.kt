@@ -10,10 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.meditatio_appli.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import messages.LatestMessagesActivity
 
 class LoginActivity: AppCompatActivity() {
+    private var interest: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,30 +39,27 @@ class LoginActivity: AppCompatActivity() {
 
                     Log.d("Login", "Successfully logged in: ${it.result.user?.uid}")
 
+                    val uid = it.result.user?.uid
 
-                    val fromId = FirebaseAuth.getInstance().uid
-                    val ref = FirebaseDatabase.getInstance().getReference("/users/$fromId/interest/")
-                    // Log.d("activity : ", ref.toString())
+                    // Créez une référence à l'objet utilisateur dans Firebase Realtime Database
+                    val ref = FirebaseDatabase.getInstance().getReference("/users/$uid/interest/")
 
-                    if (ref.toString() == "fitness")
-                    {
-                        val intent = Intent(this, MainFitness::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                    }
-                    else if (ref.toString() == "cutting")
-                    {
-                        val intent = Intent(this, MainCutting::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                    }
-                    else
-                    {
-                        val intent = Intent(this, MainBulking::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
+                    // Lire la valeur de l'intérêt de l'utilisateur
+                    ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            // Récupérez la valeur de l'intérêt de l'utilisateur
+                            interest = snapshot.getValue(String::class.java)
+                            Log.d("Login", "activity : $interest")
+                            callActivity(interest.toString())
+                        }
 
-                    }
+                        override fun onCancelled(error: DatabaseError) {
+                            // Gérer l'erreur de lecture de la base de données
+                            Toast.makeText(this@LoginActivity, "Failed to read interest: ${error.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+
 
                     /* le code suivant n'ai pas dans le tuto !!!!
                      je l'ai ajouté pour pouvoir le login avec un compte déja créer pour test facilement
@@ -93,4 +94,25 @@ class LoginActivity: AppCompatActivity() {
         }
     }
 
+    fun callActivity(interest:String){
+        if (interest == "fitness")
+        {
+            val intent = Intent(this, MainFitness::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else if (interest == "cutting")
+        {
+            val intent = Intent(this, MainCutting::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else
+        {
+            val intent = Intent(this, MainBulking::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+
+        }
+    }
 }
