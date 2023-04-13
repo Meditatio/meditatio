@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
 import android.widget.ToggleButton
-import com.example.meditatio_appli.MainActivity
-import com.example.meditatio_appli.R
+import com.example.meditatio_appli.*
 import com.google.firebase.database.FirebaseDatabase
 import models.User
 
@@ -116,10 +115,24 @@ class ChooseInterest : AppCompatActivity() {
 
         // Update the attribute in the database
         ref.updateChildren(updates as Map<String, Any?>)
-
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
+        if (user.interest == "fitness")
+        {
+            val intent = Intent(this, MainFitness::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else if (user.interest == "cutting")
+        {
+            val intent = Intent(this, MainCutting::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else
+        {
+            val intent = Intent(this, MainBulking::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 }
 

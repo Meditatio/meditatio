@@ -106,6 +106,21 @@
             android:name="registerlogin.ChooseInterest"
             android:exported="false"
             android:theme="@style/Theme.Meditatio_AppliCompat" />
+        <activity
+            android:name=".MainBulking"
+            android:exported = "true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Meditatio_Appli"></activity>
+        <activity
+            android:name=".MainFitness"
+            android:exported = "true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Meditatio_Appli"></activity>
+        <activity
+            android:name=".MainCutting"
+            android:exported = "true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Meditatio_Appli"></activity>
     </application>
 
 </manifest>

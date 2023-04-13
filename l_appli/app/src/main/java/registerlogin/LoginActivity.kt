@@ -8,9 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.meditatio_appli.MainActivity
-import com.example.meditatio_appli.R
+import com.example.meditatio_appli.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import messages.LatestMessagesActivity
 
 class LoginActivity: AppCompatActivity() {
@@ -35,11 +35,36 @@ class LoginActivity: AppCompatActivity() {
 
                     Log.d("Login", "Successfully logged in: ${it.result.user?.uid}")
 
-                    // le code suivant n'ai pas dans le tuto !!!!
-                    // je l'ai ajouté pour pouvoir le login avec un compte déja créer pour test facilement
+
+                    val fromId = FirebaseAuth.getInstance().uid
+                    val ref = FirebaseDatabase.getInstance().getReference("/users/$fromId/interest/")
+                    // Log.d("activity : ", ref.toString())
+
+                    if (ref.toString() == "fitness")
+                    {
+                        val intent = Intent(this, MainFitness::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                    }
+                    else if (ref.toString() == "cutting")
+                    {
+                        val intent = Intent(this, MainCutting::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        val intent = Intent(this, MainBulking::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+
+                    }
+
+                    /* le code suivant n'ai pas dans le tuto !!!!
+                     je l'ai ajouté pour pouvoir le login avec un compte déja créer pour test facilement
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
+                    startActivity(intent)*/
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to log in: ${it.message}", Toast.LENGTH_SHORT).show()
