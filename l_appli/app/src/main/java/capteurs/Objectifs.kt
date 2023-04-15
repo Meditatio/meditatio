@@ -14,11 +14,17 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import com.example.meditatio_appli.MainActivity
-import com.example.meditatio_appli.R
+import com.example.meditatio_appli.*
 import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import messages.ChatLogActivity
+import messages.LatestMessagesActivity
+import models.User
 
 class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
@@ -43,6 +49,11 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
     private lateinit var nbVerre : TextView
     private lateinit var buttonPlus : ImageView
     private lateinit var circularProgressBar : CircularProgressBar
+
+    companion object{
+        var currentUser: User? = null
+        val TAG = "LatestMessages"
+    }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -193,9 +204,41 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
     private fun loadFirstPage(context: Context)
     {
+        if (currentUser?.interest.toString() == "cutting")
+        {
+            Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, MainCutting::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            context.startActivity(intent)
+        }
+        else if (currentUser?.interest.toString() == "bulking")
+        {
+            Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, MainBulking::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            context.startActivity(intent)
+        }
+        else
+        {
+            Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, MainFitness::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            context.startActivity(intent)
+        }
         Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
-        val intent = Intent(context, MainActivity::class.java)
+        /*val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
-        context.startActivity(intent)
+        context.startActivity(intent)*/
+    }
+    private fun fetchCurrentUser(){
+        val uid = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                Objectifs.currentUser = p0.getValue(User::class.java)
+            }
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
     }
 }
