@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:background="@drawable/beige_background"
+        tools:context="capteurs.Objectifs"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/background1"
+            android:layout_width="wrap_content"
+            android:layout_height="113dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/beige_clair_background">
+
+            <TextView
+                android:id="@+id/Score"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="32dp"
+                android:text="Bulking"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_1"
+                android:layout_width="125dp"
+                android:layout_height="139dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/image_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/background2"
+            android:layout_width="333dp"
+            android:layout_height="106dp"
+            android:layout_below="@+id/background1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="34dp"
+            android:background="@drawable/beige_clair_background">
+
+            <TextView
+                android:id="@+id/objectifs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="176dp"
+                android:layout_marginBottom="28dp"
+                android:text="Objectifs"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/objectif"
+                android:layout_width="125dp"
+                android:layout_height="139dp"
+                android:layout_marginRight="212dp"
+                android:src="@drawable/objectif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.484"></ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/background3"
+            android:layout_width="339dp"
+            android:layout_height="111dp"
+            android:layout_below="@+id/background2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/beige_clair_background">
+
+            <TextView
+                android:id="@+id/Messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginBottom="32dp"
+                android:text="Messages"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/message"
+                android:layout_width="134dp"
+                android:layout_height="155dp"
+                android:layout_marginStart="216dp"
+                android:src="@drawable/message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.295"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/background4"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp"
+            android:layout_below="@+id/background3"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="36dp"
+            android:background="@drawable/beige_clair_background">
+
+            <TextView
+                android:id="@+id/Settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+
+                android:layout_marginTop="24dp"
+                android:text="Settings"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/settings"
+                android:layout_width="141dp"
+                android:layout_height="129dp"
+                android:layout_marginRight="204dp"
+                android:src="@drawable/settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</ScrollView>
