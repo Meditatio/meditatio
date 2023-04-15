@@ -8,11 +8,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.meditatio_appli.MainActivity
-import com.example.meditatio_appli.R
+import com.example.meditatio_appli.*
 import registerlogin.RegisterActivity
+import registerlogin.LoginActivity
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -144,10 +145,11 @@ class LatestMessagesActivity : AppCompatActivity() {
             }
             R.id.menu_sign_out ->
             {
-                //FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, MainActivity::class.java)
+
+                /*val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
+                startActivity(intent)*/
+                callActivity(currentUser?.interest.toString())
             }
         }
 
@@ -157,5 +159,26 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+    fun callActivity(interest:String){
+        if (interest == "fitness")
+        {
+            val intent = Intent(this, MainFitness::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else if (interest == "cutting")
+        {
+            val intent = Intent(this, MainCutting::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else
+        {
+            val intent = Intent(this, MainBulking::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+
+        }
     }
 }
