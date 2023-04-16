@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.preference.PreferenceManager
 import capteurs.Objectifs
 import com.example.meditatio_appli.ui.theme.Meditatio_AppliTheme
@@ -39,19 +40,24 @@ import youtubes.Youtube
 import java.util.*
 
 class MainBulking : ComponentActivity() {
+    private lateinit var youtube : ConstraintLayout
+    private lateinit var objectif : ConstraintLayout
+    private lateinit var messages : ConstraintLayout
+    private lateinit var settings : ConstraintLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Meditatio_AppliTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    MainContentBulk()
-                }
-            }
-        }
+        setContentView(R.layout.activity_bulking)
+
+        youtube = findViewById<ConstraintLayout>(R.id.background1)
+        youtube.setOnClickListener{loadYoutube2Page(context = applicationContext)}
+        objectif = findViewById<ConstraintLayout>(R.id.background2)
+        objectif.setOnClickListener{ loadObjectifsPage(context = applicationContext) }
+        messages = findViewById<ConstraintLayout>(R.id.background3)
+        messages.setOnClickListener{ loadMessagePage(context = applicationContext) }
+        settings = findViewById<ConstraintLayout>(R.id.background4)
+        settings.setOnClickListener{ loadSettingsPage(context = applicationContext) }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel()
         }
@@ -110,8 +116,6 @@ class MainBulking : ComponentActivity() {
             AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -124,194 +128,32 @@ class MainBulking : ComponentActivity() {
 
     }
 }
-/*
-@Composable
-fun ValidateButtonB() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadYoutubePage(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Programme 1 Page"
-        )
-        Text(text = "Programme 1 Page")
-    }
-}*/
-@Composable
-fun ValidateButton2B() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadMessagePage(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Message Page"
-        )
-        Text(text = "Message Page")
-    }
-}
-/*
-@Composable
-fun ValidateButton3B() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadYoutube1Page(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Programme 2 Page"
-        )
-        Text(text = "Programme 2 Page")
-    }
-}*/
-
-@Composable
-fun ValidateButton4B() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadYoutube2Page(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Programme 3 Page"
-        )
-        Text(text = "Programme 3 Page")
-    }
-}
-
-@Composable
-fun ValidateButton5B() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadSettingsPage(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Paramètres"
-        )
-        Text(text = "Paramètres")
-    }
-}
-
-@Composable
-fun ValidateButton6B() { // function to show the validate button
-    val context = LocalContext.current
-
-    Button(
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            loadObjectifsPage(context)
-        }) {
-        Icon(
-            imageVector = Icons.Default.Info,
-            contentDescription = "Objectifs"
-        )
-        Text(text = "Objectifs")
-    }
-}
-
-private fun loadYoutubePage(context: Context)
-{
-    Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
-    val intent = Intent(context, Youtube::class.java)
-    context.startActivity(intent)
-}
-
-private fun loadYoutube1Page(context: Context)
-{
-    Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
-    val intent = Intent(context, YouTube1::class.java)
-    context.startActivity(intent)
-}
 
 private fun loadYoutube2Page(context: Context)
 {
     Toast.makeText(context, "You go at the Youtube page", Toast.LENGTH_LONG).show()
     val intent = Intent(context, YouTube2::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
     context.startActivity(intent)
 }
 
 private fun loadMessagePage(context: Context)
 {
     val intent = Intent(context, LatestMessagesActivity::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
     context.startActivity(intent)
 }
 
 private fun loadSettingsPage(context: Context)
 {
     val intent = Intent(context, SettingsActivity::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
     context.startActivity(intent)
 }
 
 private fun loadObjectifsPage(context: Context)
 {
     val intent = Intent(context, Objectifs::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
     context.startActivity(intent)
-}
-
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Composable
-fun MainContentBulk() { // function to show wrap all the previous functions
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        scaffoldState = scaffoldState,
-
-        topBar = { TopAppBar(title = { Text("Meditatio") },backgroundColor = MaterialTheme.colors.primary)  },
-
-        drawerContent = { Text(text = "Drawer Menu 1") },
-
-        content = {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(20.dp)
-                    .verticalScroll(rememberScrollState()))
-            {
-
-
-                Spacer(modifier = Modifier.height(50.dp))
-               // ValidateButtonB()
-               // ValidateButton3B()
-                ValidateButton4B()
-                ValidateButton2B()
-                ValidateButton5B()
-                ValidateButton6B()
-            }
-        },
-        //bottomBar = { BottomAppBar(backgroundColor = MaterialTheme.colors.primary) { Text("Bottom Bar") } }
-    )
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreviewB() {
-
-    Meditatio_AppliTheme {
-        MainContentBulk()
-    }
 }
