@@ -16,6 +16,7 @@ import android.widget.Toolbar
 import androidx.preference.PreferenceManager
 import capteurs.Objectifs
 import com.example.meditatio_appli.MainActivity
+import com.example.meditatio_appli.MainCutting
 import com.example.meditatio_appli.R
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
@@ -66,7 +67,7 @@ class Meditation1 : YouTubeBaseActivity() {
     private fun loadFirstPage(context: Context)
     {
         Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
-        val intent = Intent(context, MainActivity::class.java)
+        val intent = Intent(context, MainCutting::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
         context.startActivity(intent)
     }
