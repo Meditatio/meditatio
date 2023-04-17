@@ -90,6 +90,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
                 nbVerre.setText(NbVerre.toString())
             }
         }
+        fetchCurrentUser()
     }
 
     override fun onResume() {
@@ -202,6 +203,17 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
+    private fun fetchCurrentUser(){
+        val uid = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                Objectifs.currentUser = p0.getValue(User::class.java)
+            }
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+    }
     private fun loadFirstPage(context: Context)
     {
         if (currentUser?.interest.toString() == "cutting")
@@ -225,20 +237,10 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
             context.startActivity(intent)
         }
-        Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
-        /*val intent = Intent(context, MainActivity::class.java)
+        /*Toast.makeText(context, "You return at the first page", Toast.LENGTH_LONG).show()
+        val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
         context.startActivity(intent)*/
     }
-    private fun fetchCurrentUser(){
-        val uid = FirebaseAuth.getInstance().uid
-        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        ref.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(p0: DataSnapshot) {
-                Objectifs.currentUser = p0.getValue(User::class.java)
-            }
-            override fun onCancelled(p0: DatabaseError) {
-            }
-        })
-    }
+
 }
