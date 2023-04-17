@@ -166,7 +166,32 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
     }
 
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+
+        val step = FirebaseDatabase.getInstance().getReference("/users/$uid/step")
+        step.setValue(totalSteps.toString())
+
+        val score = FirebaseDatabase.getInstance().getReference("/users/$uid/score")
+        score.setValue(Score.toString())
+
+        val verre = FirebaseDatabase.getInstance().getReference("/users/$uid/verre")
+        step.setValue(nbVerre.toString())
+
+        val sport = FirebaseDatabase.getInstance().getReference("/users/$uid/sport")
+        step.setValue(array1[0].toString())
+
+        val eat = FirebaseDatabase.getInstance().getReference("/users/$uid/eat")
+        step.setValue(array1[1].toString())
+
+        val fresh = FirebaseDatabase.getInstance().getReference("/users/$uid/fresh")
+        step.setValue(array1[2].toString())
+
+        val meditation = FirebaseDatabase.getInstance().getReference("/users/$uid/meditation")
+        step.setValue(array1[3].toString())
+
+
+
+        /*val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putFloat("key1",totalSteps.toFloat())
         editor.putFloat("key2",Score.toFloat())
@@ -175,22 +200,26 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         editor.putBoolean("key5",array1[1])
         editor.putBoolean("key6",array1[2])
         editor.putBoolean("key7",array1[3])
-        editor.apply()
+        editor.apply()*/
     }
 
     private fun loadData() {
-        val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+
+       /* val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
         val saveNumber = sharedPreferences.getFloat("key1",0f)
         val saveNumber1 = sharedPreferences.getFloat("key2",0f)
         val saveNumber2 = sharedPreferences.getFloat("key3",0f)
         val saveNumber3 = sharedPreferences.getBoolean("key4",false)
         val saveNumber4 = sharedPreferences.getBoolean("key5",false)
         val saveNumber5 = sharedPreferences.getBoolean("key6",false)
-        val saveNumber6 = sharedPreferences.getBoolean("key7",false)
-        totalSteps = saveNumber.toInt()
-        Score = saveNumber1.toInt()
-        NbVerre = saveNumber2.toInt()
-        array1 = arrayOf(saveNumber3,saveNumber4,saveNumber5,saveNumber6)
+        val saveNumber6 = sharedPreferences.getBoolean("key7",false)*/
+        totalSteps = currentUser?.step?.toInt()!!
+        Score = currentUser?.score?.toInt()!!
+        NbVerre = currentUser?.verre?.toInt()!!
+
+        array1 = arrayOf(currentUser?.sport.toBoolean()!!, currentUser?.eat.toBoolean()!!,currentUser?.fresh.toBoolean()!!,
+            currentUser?.meditation?.toBoolean()!!)
         for (i in 0 until list.count) {
             list.setItemChecked(i,array1[i])
         }

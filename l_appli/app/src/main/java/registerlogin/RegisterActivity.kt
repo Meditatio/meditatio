@@ -10,14 +10,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.meditatio_appli.*
 import com.example.meditatio_appli.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
-import messages.LatestMessagesActivity
 import models.User
 import java.util.*
 
@@ -135,7 +132,7 @@ var selectedPhotoUri: Uri? = null
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         val username = findViewById<TextView>(R.id.username_edittext_register)
-        val user = User(uid, username.text.toString(), profileImageUrl,"","")
+        val user = User(uid, username.text.toString(), profileImageUrl,"","", "0","0", "0","false", "false", "false", "false" )
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("RegisterActivity", "Saving the user to Firebase Database")
