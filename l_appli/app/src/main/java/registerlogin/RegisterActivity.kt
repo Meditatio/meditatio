@@ -10,10 +10,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.meditatio_appli.MainActivity
+import com.example.meditatio_appli.*
 import com.example.meditatio_appli.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 import messages.LatestMessagesActivity
@@ -23,6 +24,7 @@ import java.util.*
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_register)
 
         val registerButton = findViewById<Button>(R.id.register_button_register)
@@ -48,7 +50,8 @@ class RegisterActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)
         }
     }
-    var selectedPhotoUri: Uri? = null
+
+var selectedPhotoUri: Uri? = null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0 && resultCode == RESULT_OK && data != null)
