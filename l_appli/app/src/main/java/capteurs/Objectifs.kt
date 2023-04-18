@@ -52,7 +52,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
 
     companion object{
         var currentUser: User? = null
-        val TAG = "LatestMessages"
+        val TAG = "Objectifs"
     }
 
     @SuppressLint("MissingInflatedId")
@@ -78,6 +78,8 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         icon.setOnClickListener{loadFirstPage(applicationContext)}
         title.setText("My Objectives")
 
+        fetchCurrentUser()
+        val uid = FirebaseAuth.getInstance().uid
         loadData()
         buttonPlus.setOnClickListener()
         {
@@ -90,7 +92,6 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
                 nbVerre.setText(NbVerre.toString())
             }
         }
-        fetchCurrentUser()
     }
 
     override fun onResume() {
@@ -99,7 +100,6 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         if (stepSensor == null)
         {
-            Log.d(ChatLogActivity.TAG, "No sensor")
             Toast.makeText(this, "No Sensor detected on this Device", Toast.LENGTH_LONG).show()
         }
         else
@@ -166,32 +166,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
     }
 
     private fun saveData() {
-        val uid = FirebaseAuth.getInstance().uid ?: ""
-
-        val step = FirebaseDatabase.getInstance().getReference("/users/$uid/step")
-        step.setValue(totalSteps.toString())
-
-        val score = FirebaseDatabase.getInstance().getReference("/users/$uid/score")
-        score.setValue(Score.toString())
-
-        val verre = FirebaseDatabase.getInstance().getReference("/users/$uid/verre")
-        verre.setValue(nbVerre.toString())
-
-        val sport = FirebaseDatabase.getInstance().getReference("/users/$uid/sport")
-        sport.setValue(array1[0].toString())
-
-        val eat = FirebaseDatabase.getInstance().getReference("/users/$uid/eat")
-        eat.setValue(array1[1].toString())
-
-        val fresh = FirebaseDatabase.getInstance().getReference("/users/$uid/fresh")
-        fresh.setValue(array1[2].toString())
-
-        val meditation = FirebaseDatabase.getInstance().getReference("/users/$uid/meditation")
-        meditation.setValue(array1[3].toString())
-
-
-
-        /*val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putFloat("key1",totalSteps.toFloat())
         editor.putFloat("key2",Score.toFloat())
@@ -200,32 +175,125 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         editor.putBoolean("key5",array1[1])
         editor.putBoolean("key6",array1[2])
         editor.putBoolean("key7",array1[3])
-        editor.apply()*/
+        editor.apply()
     }
 
     private fun loadData() {
-        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val uid = FirebaseAuth.getInstance().uid
+        val step = FirebaseDatabase.getInstance().getReference("/users/$uid/step")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                totalSteps = value.toString().toInt()
+            }
 
-       /* val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
-        val saveNumber = sharedPreferences.getFloat("key1",0f)
-        val saveNumber1 = sharedPreferences.getFloat("key2",0f)
-        val saveNumber2 = sharedPreferences.getFloat("key3",0f)
-        val saveNumber3 = sharedPreferences.getBoolean("key4",false)
-        val saveNumber4 = sharedPreferences.getBoolean("key5",false)
-        val saveNumber5 = sharedPreferences.getBoolean("key6",false)
-        val saveNumber6 = sharedPreferences.getBoolean("key7",false)*/
-        totalSteps = currentUser?.step?.toInt()!!
-        Score = currentUser?.score?.toInt()!!
-        NbVerre = currentUser?.verre?.toInt()!!
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+        val score1 = FirebaseDatabase.getInstance().getReference("/users/$uid/score")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                Score = value.toString().toInt()
+            }
 
-        array1 = arrayOf(currentUser?.sport.toBoolean()!!, currentUser?.eat.toBoolean()!!,currentUser?.fresh.toBoolean()!!,
-            currentUser?.meditation?.toBoolean()!!)
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+        val verre = FirebaseDatabase.getInstance().getReference("/users/$uid/verre")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                NbVerre = value.toString().toInt()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+
+        val sport = FirebaseDatabase.getInstance().getReference("/users/$uid/sport")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                array1[0] = value.toString().toBoolean()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+
+        val eat = FirebaseDatabase.getInstance().getReference("/users/$uid/eat")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                array1[1] = value.toString().toBoolean()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+
+        val fresh = FirebaseDatabase.getInstance().getReference("/users/$uid/fresh")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                array1[2] = value.toString().toBoolean()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+
+        val meditation = FirebaseDatabase.getInstance().getReference("/users/$uid/meditation")
+        step.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.getValue(String::class.java)
+                array1[3] = value.toString().toBoolean()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // handle error
+            }
+        })
+
+
+
+
         for (i in 0 until list.count) {
             list.setItemChecked(i,array1[i])
         }
         score.setText("My Score : "+ Score.toString())
         nbVerre.setText(NbVerre.toString())
         stepsTaken.setText(totalSteps.toString())
+
+        /*val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
+        val saveNumber = sharedPreferences.getFloat("key1",0f)
+        val saveNumber1 = sharedPreferences.getFloat("key2",0f)
+        val saveNumber2 = sharedPreferences.getFloat("key3",0f)
+        val saveNumber3 = sharedPreferences.getBoolean("key4",false)
+        val saveNumber4 = sharedPreferences.getBoolean("key5",false)
+        val saveNumber5 = sharedPreferences.getBoolean("key6",false)
+        val saveNumber6 = sharedPreferences.getBoolean("key7",false)
+        totalSteps = saveNumber.toInt()
+        Score = saveNumber1.toInt()
+        NbVerre = saveNumber2.toInt()
+        array1 = arrayOf(saveNumber3,saveNumber4,saveNumber5,saveNumber6)
+        for (i in 0 until list.count) {
+            list.setItemChecked(i,array1[i])
+        }
+        score.setText("My Score : "+ Score.toString())
+        nbVerre.setText(NbVerre.toString())
+        stepsTaken.setText(totalSteps.toString())*/
+
 
     }
 
