@@ -175,19 +175,19 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         score.setValue(Score.toString())
 
         val verre = FirebaseDatabase.getInstance().getReference("/users/$uid/verre")
-        step.setValue(nbVerre.toString())
+        verre.setValue(nbVerre.toString())
 
         val sport = FirebaseDatabase.getInstance().getReference("/users/$uid/sport")
-        step.setValue(array1[0].toString())
+        sport.setValue(array1[0].toString())
 
         val eat = FirebaseDatabase.getInstance().getReference("/users/$uid/eat")
-        step.setValue(array1[1].toString())
+        eat.setValue(array1[1].toString())
 
         val fresh = FirebaseDatabase.getInstance().getReference("/users/$uid/fresh")
-        step.setValue(array1[2].toString())
+        fresh.setValue(array1[2].toString())
 
         val meditation = FirebaseDatabase.getInstance().getReference("/users/$uid/meditation")
-        step.setValue(array1[3].toString())
+        meditation.setValue(array1[3].toString())
 
 
 
