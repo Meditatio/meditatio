@@ -43,14 +43,14 @@ class Launching : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var interest = dataSnapshot.child("interest").getValue(String::class.java)
                 Log.d("Login", "interest : $interest")
-                goToMain(interest!!)
+                    goToMain(interest)
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
     }
 
-    private fun goToMain(interest:String){
+    private fun goToMain(interest:String?){
         if (interest == "fitness")
         {
             val intent = Intent(this, MainFitness::class.java)
@@ -65,13 +65,20 @@ class Launching : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        else
+        else if (interest == "bulking")
         {
             val intent = Intent(this, MainBulking::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
 
+        }
+        else
+        {
+            val intent = Intent(this, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
         }
     }
 }
