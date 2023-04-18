@@ -166,7 +166,29 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
     }
 
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
+        val uid = FirebaseAuth.getInstance().uid
+
+        val step = FirebaseDatabase.getInstance().getReference("/users/$uid/step")
+        step.setValue(totalSteps.toString())
+
+        val score = FirebaseDatabase.getInstance().getReference("/users/$uid/score")
+        score.setValue(Score.toString())
+
+        val verre = FirebaseDatabase.getInstance().getReference("/users/$uid/verre")
+        verre.setValue(NbVerre.toString())
+
+        val sport = FirebaseDatabase.getInstance().getReference("/users/$uid/sport")
+        sport.setValue(array1[0].toString())
+
+        val eat = FirebaseDatabase.getInstance().getReference("/users/$uid/eat")
+        eat.setValue(array1[1].toString())
+
+        val fresh = FirebaseDatabase.getInstance().getReference("/users/$uid/fresh")
+        fresh.setValue(array1[2].toString())
+
+        val meditation = FirebaseDatabase.getInstance().getReference("/users/$uid/meditation")
+        meditation.setValue(array1[3].toString())
+        /*val sharedPreferences = getSharedPreferences("myPrefs",Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putFloat("key1",totalSteps.toFloat())
         editor.putFloat("key2",Score.toFloat())
@@ -175,7 +197,7 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
         editor.putBoolean("key5",array1[1])
         editor.putBoolean("key6",array1[2])
         editor.putBoolean("key7",array1[3])
-        editor.apply()
+        editor.apply()*/
     }
 
     private fun loadData() {
