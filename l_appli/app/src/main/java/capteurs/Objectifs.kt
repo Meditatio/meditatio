@@ -160,6 +160,9 @@ class Objectifs : YouTubeBaseActivity() , SensorEventListener{
             }
             score.setText("My Score : "+ Score.toString())
             nbVerre.setText("0")
+            circularProgressBar.apply {
+                setProgressWithAnimation(totalSteps.toFloat())
+            }
             saveData()
         }
         return super.onOptionsItemSelected(item)
