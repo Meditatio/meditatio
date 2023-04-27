@@ -21,5 +21,14 @@
 
 
     </PreferenceCategory>
+    <PreferenceCategory android:title="Program selection">
+
+    </PreferenceCategory>
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/program_entries"
+        android:entryValues="@array/program_values"
+        android:key="program"
+        android:title="Click here to select your program (requires restart)" />
 
 </PreferenceScreen>

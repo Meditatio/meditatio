@@ -9,4 +9,18 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="program_entries">
+        <item>Bulking</item>
+        <item>Cutting</item>
+        <item>Fitness</item>
+    </string-array>
+
+    <string-array name="program_values">
+        <item>bulking</item>
+        <item>cutting</item>
+        <item>fitness</item>
+    </string-array>
+
+
 </resources>

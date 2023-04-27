@@ -76,7 +76,17 @@ class MainCutting : ComponentActivity() {
 
         val notificationService = Intent(applicationContext, NotificationService::class.java)
         stopService(notificationService)
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        if(prefs.getString("program", "")!="cutting"){
+            with (prefs.edit()) {
+                putString("program", "cutting")
+                commit()
+            }
+        }
+
         super.onStart()
+
     }
 
     override fun onStop() {
