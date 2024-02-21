@@ -3,7 +3,7 @@
 # 1. Introduction 
 
 Meditatio is a project developed by four EPITA students
-during their semester abroad at UQAC, Canada.
+during their semester abroad at UQAC, Canada 🇨🇦
 
 We aimed to create an Android application 
 using Kotlin and Android Studio 
